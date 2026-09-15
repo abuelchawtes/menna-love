@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>أسف واعتذار من القلب ❤️</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+font-family:"Segoe UI",Tahoma,sans-serif;
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd1dc);
+position:relative;
+}
+body:before{
+content:"";position:absolute;inset:0;
+background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.35),transparent 28%),
+radial-gradient(circle at 80% 75%,rgba(255,255,255,.25),transparent 30%);
+}
+.container{
+position:relative;z-index:10;width:min(92%,430px);padding:32px 24px;
+border:1px solid rgba(255,255,255,.7);
+border-radius:28px;text-align:center;
+background:rgba(255,255,255,.91);
+box-shadow:0 20px 60px rgba(120,20,60,.22);
+backdrop-filter:blur(10px);
+animation:cardIn .7s ease;
+}
+h1{color:#c2185b;font-size:25px;line-height:1.55;margin:0 0 26px}
+p{color:#4b3440;font-size:18px;line-height:2;margin:18px 0 0}
+.buttons{display:flex;justify-content:center;gap:16px;min-height:62px;position:relative}
+button{
+border:0;border-radius:999px;padding:14px 30px;font-size:18px;font-weight:700;
+color:#fff;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.13);
+transition:transform .2s ease,filter .2s ease;
+touch-action:manipulation;
+}
+button:active{transform:scale(.95)}
+.btn-yes{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.btn-no{background:linear-gradient(135deg,#ef4444,#dc2626);position:relative}
+.page-2{display:none}
+.heart{font-size:58px;animation:pulse 1s infinite alternate;margin-bottom:5px}
+.small{font-size:14px;color:#9b687e;margin-top:22px}
+.bg-heart{
+position:fixed;bottom:-60px;z-index:2;pointer-events:none;
+animation:float linear forwards;opacity:.8;
+}
+.sparkle{position:fixed;z-index:1;pointer-events:none;animation:twinkle 1.8s infinite alternate}
+@keyframes pulse{to{transform:scale(1.16)}}
+@keyframes float{to{transform:translateY(-120vh) rotate(360deg);opacity:0}}
+@keyframes twinkle{from{opacity:.15;transform:scale(.7)}to{opacity:.9;transform:scale(1.15)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:380px){
+.container{padding:26px 18px}
+h1{font-size:22px}
+p{font-size:16px}
+button{padding:12px 24px;font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="page1">
+  <div style="font-size:42px;margin-bottom:8px">🥺❤️</div>
+  <h1>منة الله.. هل تقبلين أسفي واعتذاري؟</h1>
+  <div class="buttons" id="btnContainer">
+    <button class="btn-yes" onclick="showLovePage()">نعم 💕</button>
+    <button class="btn-no" id="noBtn" onclick="moveButton()">لا 💔</button>
+  </div>
+  <div class="small">اختاري من قلبك... 🥹</div>
+</div>
+
+<div class="container page-2" id="page2">
+  <div class="heart">💖💍❤️</div>
+  <h1>منة الله.. أنا آسف يا حبيبتي، حقك عليّ! 🥺</h1>
+  <p>
+    منة الله، ما تزعليش مني أبدًا، زعلتك غالية عليّ ومش هتحصل تاني وعد مني.. ❤️<br>
+    أنتِ كل حاجة حلوة في حياتي، وضحكتك بالدنيا كلها والله ما هعمل كدة تاني
+    ومقدرش على زعلك.<br>
+    <strong>وأنا بحبك أوي أوي أوي يا أم البنات يا ست البنات! 🥰✨</strong>
+  </p>
+</div>
+
+<script>
+const noBtn=document.getElementById("noBtn");
+let moveCount=0;
+
+function moveButton(){
+  moveCount++;
+  if(moveCount>=4){
+    noBtn.textContent="نعم 💕";
+    noBtn.className="btn-yes";
+    noBtn.style.position="static";
+    noBtn.onclick=showLovePage;
+    return;
+  }
+  const margin=12;
+  const maxX=Math.max(margin,window.innerWidth-noBtn.offsetWidth-margin);
+  const maxY=Math.max(margin,window.innerHeight-noBtn.offsetHeight-margin);
+  noBtn.style.position="fixed";
+  noBtn.style.left=(Math.random()*maxX)+"px";
+  noBtn.style.top=(Math.random()*maxY)+"px";
+}
+
+function showLovePage(){
+  document.getElementById("page1").style.display="none";
+  document.getElementById("page2").style.display="block";
+  createHearts();
+  if(navigator.vibrate) navigator.vibrate([80,40,120]);
+}
+
+function createHearts(){
+  for(let i=0;i<45;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.className="bg-heart";
+      h.textContent=["❤️","💕","💗","💖","💘"][Math.floor(Math.random()*5)];
+      h.style.left=Math.random()*100+"vw";
+      h.style.fontSize=(18+Math.random()*28)+"px";
+      h.style.animationDuration=(3+Math.random()*4)+"s";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),8000);
+    },i*100);
+  }
+  for(let i=0;i<18;i++){
+    const s=document.createElement("div");
+    s.className="sparkle"; s.textContent="✨";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.fontSize=(12+Math.random()*18)+"px";
+    s.style.animationDelay=Math.random()*2+"s";
+    document.body.appendChild(s);
+  }
+}
+</script>
+</body>
+</html>
